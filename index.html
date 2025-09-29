@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reusable Map Library</title>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/> -->
+
+    <!-- Add required CSS + JS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" /> -->
+    <!-- Add required CSS + JS -->
+    <link rel="stylesheet" href="openstreet/leaflet.css" />
+    <link rel="stylesheet" href="openstreet/leaflet.draw.css" />
+    <script src="openstreet/leaflet.js"></script>
+    <script src="openstreet/leaflet.draw.js"></script>
+    <script src="openstreet/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="openstreet/Control.Geocoder.css" />
+    <script src="openstreet.js"></script>
+
+    <style>
+        /* .leaflet-control-custom {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        } */
+    </style>
+</head>
+
+<body>
+    <h3>Map Library Example</h3>
+    <div id="map" style="height:600px;width:100%;border:1px solid #444;"></div>
+    <p id="coords">Click on map to select location</p>
+
+    <script>
+        // --------------------
+        // ✅ Example usage
+        // --------------------
+        const map = new MyMap("map", {
+            defaultLocation: [31.5204, 74.3587], // Lahore
+            zoom: 13,
+            allowPolygon: true,
+            defaultPolygons: [
+                {
+                    coords: [[31.55058981882155, 74.37177658081056], [31.54956581027519, 74.38138961791994], [31.541373337388464, 74.38018798828126], [31.54195853787101, 74.36885833740236], [31.54605483852214, 74.36731338500978]],
+                    data: { name: "Plot A", price: 100000 }
+                },
+                {
+                    coords: [[31.54152878162448, 74.38540220260622], [31.5494103794243, 74.3858313560486], [31.54956581027519, 74.38138961791994], [31.54129104327637, 74.38068151474]],
+                    data: { name: "Plot B", price: 150000 }
+                }
+            ],
+            // onSelect: (lat, lng) => {
+            //     console.log("Marker set:", lat, lng);
+            // },
+            onPolygon: (coords) => {
+                console.log("Polygon drawn:", coords);
+            },
+            onPolygonClick: (coords, data) => {
+                console.log(coords);
+
+                alert("Polygon clicked: " + JSON.stringify(data));
+            }
+        });
+    </script>
+</body>
+
+</html>
